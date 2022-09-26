@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url("https://img.wallpapersafari.com/desktop/1280/1024/57/9/1Slons.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+form {
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.result {
+  display: flex;
+  flex-wrap: no-wrap;
+}
+.cityclass {
+  width: 10rem;
+  height: 40%;
+
+  border: 0.5px solid rgba(0, 255, 149, 0.562);
+  border-radius: 20px;
+  margin-left: 3px;
+}
+.card,
+.list-group-item {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 10px;
+}
+.RemoveBtn {
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: coral;
+  margin-top: 3px;
+  border-radius: 20px;
+}
+
+button {
+  margin-left: 3px;
+  animation: wiggle 2s linear infinite;
+}
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+}
