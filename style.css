@@ -41,6 +41,7 @@ form {
   background-color: coral;
   margin-top: 3px;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 button {
