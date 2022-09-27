@@ -16,7 +16,7 @@ const getWeatherData = () => {
   fetch(url)
     .then((res) => {
       if (!res.ok) {
-        warning.innerHTML = `there is a ${res.status} error`;
+        warning.innerHTML = `${res.status} error, You have to enter a valid city name `;
         throw new Error();
       }
       return res.json();
@@ -48,7 +48,9 @@ const createCity = (data) => {
   </ul>
   <div class="RemoveBtn ">Remove</div>
   
-</div>`;
+</div>
+
+`;
   result.appendChild(newCity);
   inputForm.value = "";
   warning.innerHTML = "";
