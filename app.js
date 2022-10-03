@@ -23,7 +23,7 @@ function gettinglocation(item) {
   fetch(url)
     .then((res) => {
       if (!res.ok) {
-        warning.innerHTML = `${res.status} error, You have to enter a valid city name `;
+        warning.innerHTML = `${res.status} error for current city`;
         throw new Error();
       }
       return res.json();
