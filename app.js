@@ -1,4 +1,5 @@
 const APIKey = "d8433635a719a5191d57e2e5d9343f98";
+
 const form = document.querySelector("form");
 const inputForm = document.getElementById("city");
 const result = document.getElementById("result");
@@ -32,14 +33,32 @@ const getWeatherData = () => {
 };
 const createCity = (data) => {
   const { name, main, weather, sys } = data;
+  const cityNames = result.querySelectorAll(".card-title");
+  const cityNamesArray = Array.from(cityNames);
+  if (cityNamesArray.length > 0) {
+    console.log(cityNamesArray);
+    const filteredArray = cityNamesArray.filter(
+      (text) => text.innerText == name
+    );
+    if (filteredArray.length > 0) {
+      warning.innerText = `You already know the weather for ${name}, Please search for another city 😉`;
+      setTimeout(() => {
+        warning.innerText = "";
+      }, 5000);
+      form.reset();
+      return;
+    }
+  }
+  console.log(cityNames);
   const newCity = document.createElement("div");
   newCity.setAttribute("class", "cityclass");
   newCity.innerHTML = `
   <div class="card" >
 
   <div class="card-body">
-    <h5 class="card-title">${name} , ${sys.country}</h5> 
-    <p class="card-text">Temperature is ${Math.floor(main.temp)}°C</p>
+    <h5 class="card-title">${name} </h5> 
+    <h5 class="card-country"> ${sys.country}</h5> 
+    <p class="card-text"> ${Math.floor(main.temp)}°C</p>
  
   <ul class="list-group list-group-flush">
     <li class="list-group-item" ><img style="width: 4rem;" src="./img/cloud_89333.png" alt=""></li>
