@@ -5,22 +5,22 @@ const inputForm = document.getElementById("city");
 const result = document.getElementById("result");
 const warning = document.querySelector(".warning");
 // console.log(navigator.geolocation.getCurrentPosition());
-function getLocation() {
+function getLocationData() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(gettinglocation);
+    navigator.geolocation.getCurrentPosition(gettinglocationData);
   } else {
     warning.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
-getLocation();
-function gettinglocation(item) {
+getLocationData();
+async function gettinglocationData(item) {
   console.log(item.coords);
   const lat = item.coords.latitude;
 
   const long = item.coords.latitude;
 
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${APIKey}`;
-  fetch(url)
+  await fetch(url)
     .then((res) => {
       if (!res.ok) {
         warning.innerHTML = `${res.status} error for current city`;
@@ -35,12 +35,12 @@ form.onsubmit = (e) => {
   e.preventDefault();
   getWeatherData();
 };
-const getWeatherData = () => {
+const getWeatherData = async () => {
   let input = inputForm.value;
 
   let weatherType = "metric";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${APIKey}&units=${weatherType}`;
-  fetch(url)
+  await fetch(url)
     .then((res) => {
       if (!res.ok) {
         warning.innerHTML = `${res.status} error, You have to enter a valid city name `;
